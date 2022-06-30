@@ -14,6 +14,14 @@ module Pages
       find(:id, 'login-button').click
     end
 
+    def add_items_to_cart
+      # add backpack to cart :)
+      find(:id, 'add-to-cart-sauce-labs-backpack').click
+
+      #add fleece jacket to cart :)
+      find(:id, 'add-to-cart-sauce-labs-fleece-jacket').click
+    end
+
     def click_logout_button
       find(:id, 'react-burger-menu-btn').click
       find(:id, 'logout_sidebar_link').click
