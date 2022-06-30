@@ -10,6 +10,9 @@ you would see results similar to the following.
 
 ![img.png](img.png)
 
+## Circle CI reports
+Circle CI provides a step-by step result that should output the below
+![img_2.png](img_2.png)
 
 ## Allure Reports
 View your reports by typing the following command
