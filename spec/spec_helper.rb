@@ -24,6 +24,28 @@ end
 
 Capybara.register_driver :firefox do |app|
   # Run local
-  Capybara::Selenium::Driver.new(app, :browser => :firefox)
+  # Capybara::Selenium::Driver.new(app, :browser => :firefox)
+
+  # Run on browser stack
+  username = "#{ENV['BS_USERNAME']}"
+  access_key = "#{ENV['BS_ACCESS_KEY']}"
+  server="hub-cloud.browserstack.com"
+
+
+  caps = Selenium::WebDriver::Remote::Capabilities.chrome({
+                                                            'bstack:options' => {
+                                                              "os" => "Windows",
+                                                              "osVersion" => "7",
+                                                              "local" => "false",
+                                                              "seleniumVersion" => "3.10.0",
+                                                            },
+                                                            "browserName" => "Firefox",
+                                                            "browserVersion" => "100.0",
+                                                          })
+
+  Capybara::Selenium::Driver.new(app,
+                                 :browser => :remote,
+                                 :url => "https://#{username}:#{access_key}@#{server}/wd/hub",
+                                 :options => caps)
 
 end
