@@ -18,7 +18,9 @@ RSpec.describe 'Login' do
       sign_in = Pages::LoginPage.new
       sign_in.set_login_credentials
       sign_in.sign_in_button
+      sleep(2)
 
+      sign_in.add_items_to_cart
       sleep(2)
 
       sign_in.click_logout_button
