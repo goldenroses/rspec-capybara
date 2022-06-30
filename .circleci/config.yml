@@ -1,0 +1,27 @@
+version: 2.1
+
+orbs:
+  browser-tools: circleci/browser-tools@1.1
+
+jobs:
+  test:
+    docker:
+      - image: cimg/ruby:3.1.2-browsers
+    steps:
+      - checkout
+      - browser-tools/install-browser-tools
+      - run:
+          name: Install bundler
+          command:
+            bundle
+      - run:
+          name: Ruby version
+          command: ruby -v
+      - run:
+          name: run tests
+          command: ./bin/rspec spec/sauce_demo.rb
+
+workflows:
+  setup_and_test:
+    jobs:
+      - test
